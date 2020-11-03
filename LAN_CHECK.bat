@@ -24,7 +24,7 @@ ECHO/
 nslookup * 2>nul
 ECHO [97m STATUS  IP address    NS Lookup Name
 
-SETLOCAL ENABLEDELAYEDEXPANSION
+SETLOCAL ENABLEDELAYEDEXPANSION & PUSHD
 SET count=0
 FOR /L %%R IN (%RangeStart%,1,%RangeEnd%) DO (			
 			SET /A count=!count! +1
@@ -37,7 +37,7 @@ FOR /L %%R IN (%RangeStart%,1,%RangeEnd%) DO (
 																						  )
 )
 ECHO -----------------------END---------------------------------
-
+POPD & ENDLOCAL
 REM Wait a few seconds to absorb the info then loop back to the start.
 TIMEOUT 20
 GOTO BEGIN
